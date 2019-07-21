@@ -1,19 +1,21 @@
+# Import relevant packages
 from bs4 import BeautifulSoup
 import requests
 import urllib3
 from datetime import datetime
 import pandas as pd
 
+# Disabling insecure warnings to avoid printed warnings.
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# Using Requests & BeautifulSoup, pass a URL to this method and it will return the URL's HTML code as a list of lines.
+# Using Requests & BeautifulSoup...
+# Pass a URL to this method and it will return the URL's HTML code as a list of lines.
 def get_html_rows(url):
     r = requests.get(url, verify=False)
     s = BeautifulSoup(r.content, 'html5lib')
     html = s.prettify()
     return html.splitlines()
 
-# Taking 'https://www.wta.org/go-hiking/hikes' as a parameter,
 # this method will find all links to pages consisting of a list of hikes and, return all links as a list using recursion.
 # Note, this method does not include 'https://www.wta.org/go-outside/hikes' in the returned list.
 def get_hike_pages(url, last_page = None):
@@ -211,6 +213,7 @@ def get_hike_info(hike_urls):
 
 
 curr_date = datetime.now().date()
+# Get all hike page links, get all individual hike links, get all hike info and, write to a csv.
 all_hike_page_links = list(set().union(get_hike_pages('https://www.wta.org/go-outside/hikes'), ['https://www.wta.org/go-outside/hikes']))
 all_hike_links = get_hikes(all_hike_page_links)
 wta_hikes = get_hike_info(all_hike_links)
