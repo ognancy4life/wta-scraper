@@ -35,18 +35,18 @@ import pandas as pd
 class WTAScraper():
 
     #**************************************************************************************
-	# Constructor: __init__(self)
-	#
-	# Description
-	# -----------
-	# This constructor, once instatiated, will initialize the current date as a class level
+    # Constructor: __init__(self)
+    #
+    # Description
+    # -----------
+    # This constructor, once instatiated, will initialize the current date as a class level
     # variable.
-	#
-	# ------------------------------- Arguments ------------------------------------------
-	#        Type               Name                         Description
-	# --------------------  ------------  ------------------------------------------------
+    #
+    # ------------------------------- Arguments ------------------------------------------
+    #        Type               Name                         Description
+    # --------------------  ------------  ------------------------------------------------
     # None
-	#*************************************************************************************
+    #*************************************************************************************
     def __init__(self):
         self.curr_date = datetime.now().date()
 
