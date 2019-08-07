@@ -2,17 +2,16 @@
 
 
 ## Description
-> This is the project folder for a WTA web scraper.
-> This web scraper gathers all relevant information regarding hikes listed on 'wta.org/go-outside/hikes'
-
+> This is a project folder for a Washington Trail Association (WTA) web scraper.
+> This web scraper gathers all relevant information regarding hikes listed on 'wta.org/go-outside/hikes'.
 > Keep in mind that this scraper relies on HTML code published on the sub-domains of 'wta.org'
 > Thus, any changes made to their webpages can potentially make it so this web scraper fails.
 
 
 ## Getting Started
-To view the hikes this web scraper extract data from visit [WTA's Hiking Guide](https://https://www.wta.org/go-outside/hikes).
+To view the hikes this web scraper extract data from visit [WTA's Hiking Guide](https://www.wta.org/go-outside/hikes).
 
-To get started simply run the WTA_Hike_Scraper.py Python script.
+To get started, simply run the _WTA_Hike_Scraper.py_** Python script.
 
 ```console
 user@machine:~/wta-scraper$ python3 WTA_Hike_Scraper.py
