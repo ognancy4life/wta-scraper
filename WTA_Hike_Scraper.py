@@ -10,19 +10,24 @@
 #
 # File Description
 # ----------------
-# Procedural scripts that routes and organizes hike data from www.wta.org.
+# An ETL script that routes and organizes hike data from Washington Trails 
+# Association's web domain. The primary sub-domain this script explores is: 
 # https://www.wta.org/go-outside/hikes
+#
+# This script was mostly created for exploratory research and personal interest in
+# local hike data. Washington is full of beautiful places to explore! I simply 
+# wanted to share this information with others :)
 #
 # Methods
 # -------------
 #    Name                                     Description
 # ----------                          ------------------------------------------------
-# get_html_rows()                     Gets HTML code from website.
+# get_html_rows()                     Gets HTML code from a given website.
 # get_hike_pages()                    Returns a list of URLs found on
 #                                     'https://www.wta.org/go-outside/hikes'.
 # get_hikes()                         Returns individual hike links found on
 #                                     hike list pages on www.wta.org.
-# get_hike_info()                     Returns organizes hike data hosted on
+# get_hike_info()                     Returns organized hike data hosted on
 #                                     www.wta.org.
 #*************************************************************************************
 # Imported Packages:
@@ -33,6 +38,24 @@ from datetime import datetime
 import pandas as pd
 
 class WTAScraper():
+    """This object contains methods for requesting and manipulating HTML
+    code found on Washington Trails Association's website. This HTML 
+    code is used to extract, organize and return hike data that is 
+    actionable to the user.
+
+    Arguments
+    ---------
+    None
+    
+    Raises
+    ------
+    None
+
+    Returns
+    -------
+    Class -- Instance of WTAScraper.
+    """
+
 
     #**************************************************************************************
     # Constructor: __init__(self)
@@ -69,6 +92,21 @@ class WTAScraper():
     # string                url           The URL for the desired HTML code.
     #*************************************************************************************
     def get_html_rows(self, url):
+        """This method returns the HTML code for a given URL.
+
+        Arguments
+        ---------
+        1. url {string} -- The URL for the desired HTML code.
+        
+        Raises
+        ------
+        None
+        
+        Returns
+        -------
+        list -- HTML code split by lines.
+        """
+
         r = requests.get(url, verify=False)
         s = BeautifulSoup(r.content, 'html5lib')
         html = s.prettify()
@@ -79,7 +117,7 @@ class WTAScraper():
     #
     # Description
     # -----------
-    # This method will find all URLs to webpages consisting of a list of hikes and,
+    # This method will find all URLs to webpages consisting of lists of hikes and,
     # will return all URLs as a list using recursion. Note, this method does not include
     # 'https://www.wta.org/go-outside/hikes' in the returned list. So, it may be best to
     # append this URL to your final list.
@@ -94,10 +132,30 @@ class WTAScraper():
     # --------------------  ------------  ------------------------------------------------
     # string                url           This URL should be
     #                                     'https://www.wta.org/go-outside/hikes'
-    # boolean               last_page     This method is adjusted through the recursive
+    # boolean               last_page     This argument is edited through recursive
     #                                     techniques in order to exit the recursive loop.
+    #                                     Thus, initially, no value should be passed for 
+    #                                     this argument
     #*************************************************************************************
     def get_hike_pages(self, url, last_page = None):
+        """This method retrieves and returns a list of URLs to webpages. 
+        These webpages are the pages on www.wta.org that house lists of
+        hikes.
+
+        Arguments
+        ---------
+        1. url {string} -- This URL should be: 'https://www.wta.org/go-outside/hikes'
+        2. last_page {boolean} -- This argument is edited through the recursive techniques.
+        
+        Raises
+        ------
+        None
+        
+        Returns
+        -------
+        list -- A list of URLs to webpages consisting of lists of hikes.
+        """
+
         print('Getting all links to hike pages...')
 
         # Retireve HTML code as list of lines.
@@ -164,7 +222,7 @@ class WTAScraper():
     #
     # Description
     # -----------
-    # Using a list of URLs to webpages consisting of a list of hikes, this method will
+    # Using a list of URLs to webpages consisting of lists of hikes, this method will
     # find all URLs to webpages consisting of individual hikes found on each of the URLs
     # passed to this method.
     #
@@ -177,9 +235,25 @@ class WTAScraper():
     #      Type               Name                         Description
     # ---------------  -----------------  ------------------------------------------------
     # list             hike_page_links    This list should be a list of URLs to webpages
-    #                                     consisting of a list of hikes.
+    #                                     consisting of lists of hikes.
     #*************************************************************************************
     def get_hikes(self, hike_page_links):
+        """This method retrieves and returns a list of URLs to webpages. 
+        These webpages are the individual hikes hosted on www.wta.org.
+
+        Arguments
+        ---------
+        1. hike_page_links {list} -- This list should be a list of URLs to webpages consisting of lists of hikes.
+        
+        Raises
+        ------
+        None
+        
+        Returns
+        -------
+        list -- A list of URLs to webpages consisting of individual hikes.
+        """
+
         print('Getting all links to individual hikes...')
 
         hike_links_list = []
@@ -219,6 +293,23 @@ class WTAScraper():
     #                                     consisting of individual hikes
     #*************************************************************************************
     def get_hike_info(self, hike_urls):
+        """Using a list of URLs to webpages consisting of individual hikes,
+        this method will retrieve and organize hike data. Then, it will
+        return hike data in the format of a DataFrame.
+
+        Arguments
+        ---------
+        1. hike_urls {list} -- A list of URLs to webpages consisting of individual hikes
+        
+        Raises
+        ------
+        None
+        
+        Returns
+        -------
+        DataFrame -- Clean, organized and actionable hike data :)
+        """
+
 
         titles = []
         regions = []
@@ -390,7 +481,8 @@ class WTAScraper():
     #
     # Description
     # -----------
-    # Method main strategically operates the methods of this class for accurate operation.
+    # Method main that strategically operates the methods of this class for accurate 
+    # operation.
     #
     # RETurn
     #  Type                            Description
@@ -403,13 +495,33 @@ class WTAScraper():
     # None
     #*************************************************************************************
     def main(self):
+        """Method main that strategically operates the methods of this class
+        for accurate operation :)
+        
+        Instruction
+        -----------
+        Please edit the file path for the location where you would like the final DataFrame to be written.
+
+        Arguments
+        ---------
+        None
+        
+        Raises
+        ------
+        None
+        
+        Returns
+        -------
+        None
+        """
+
         # Disabling insecure warnings to avoid printed warnings.
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         # Get all hike page links, get all individual hike links, get all hike info and, write to a csv.
         all_hike_page_links = list(set().union(self.get_hike_pages('https://www.wta.org/go-outside/hikes'), ['https://www.wta.org/go-outside/hikes']))
         all_hike_links = self.get_hikes(all_hike_page_links)
         wta_hikes = self.get_hike_info(all_hike_links)
-        wta_hikes.to_csv('YOUR_FILE_LOCATION\{0}_wta_hikes.csv'.format(self.curr_date.), index = False)
+        wta_hikes.to_csv('YOUR_FILE_LOCATION\{0}_wta_hikes.csv'.format(self.curr_date), index = False)
 
 
 ##########################################################################################
