@@ -17,6 +17,7 @@ To get started, simply run the **_WTA_Hike_Scraper.py_** Python script.
 user@machine:~/wta-scraper$ python3 WTA_Hike_Scraper.py
 ```
 
+
 ## Contributors
 * Yoshio Hasegawa
 
