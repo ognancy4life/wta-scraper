@@ -11,7 +11,7 @@
 ## Getting Started
 To view the hikes this web scraper extract data from visit [WTA's Hiking Guide](https://www.wta.org/go-outside/hikes).
 
-To get started, simply run the _WTA_Hike_Scraper.py_** Python script.
+To get started, simply run the **_WTA_Hike_Scraper.py_** Python script.
 
 ```console
 user@machine:~/wta-scraper$ python3 WTA_Hike_Scraper.py
