@@ -4,8 +4,9 @@
 ## Description
 > This is a project folder for a Washington Trail Association (WTA) web scraper.
 > This web scraper gathers all relevant information regarding hikes listed on 'wta.org/go-outside/hikes'.
+> Then, returns the formatted data in a CSV file.
 > Keep in mind that this scraper relies on HTML code published on the sub-domains of 'wta.org'
-> Thus, any changes made to their webpages can potentially make it so this web scraper fails.
+> Thus, any changes made to their webpages can potentially cause this web scraper to fail.
 
 
 ## Getting Started
