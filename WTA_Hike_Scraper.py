@@ -13,10 +13,10 @@
 # This is an ETL script that retrieves and organizes hike data from Washington Trails 
 # Association's (WTA) web domain. The primary sub-domain this script explores is, 
 # https://www.wta.org/go-outside/hikes. From this location, hike results page URLs 
-# are retrieved. Then, each individual hike URL is parsed out and store. Each 
-# individual hike URL used to gather information found on every hike page hosted on 
-# WTA's website. Finally, this data is formatted into a DataFrame and, that DataFrame
-# is written to a CSV file. 
+# are retrieved. Then, each individual hike URL is parsed out and stored. Each 
+# individual hike URL is used to gather information found on every hike page hosted 
+# on WTA's website. Finally, this data is formatted into a DataFrame and, that 
+# DataFrame is written to a CSV file. 
 #
 # This script was mostly created for exploratory research and personal interest in
 # local hike data. Washington is full of beautiful places to explore! I simply 
@@ -29,11 +29,11 @@
 # get_html_rows()                     Gets HTML code for a given website.
 #
 # get_hike_results_urls_list()        Returns a list of URLs for hike results found 
-#                                     on this webpage:
+#                                     under this sub-domain:
 #                                     'https://www.wta.org/go-outside/hikes'.
 #
 # get_individual_hike_urls()          Returns a list of individual hike URLs found on
-#                                     hike results pages WTA's website.
+#                                     hike results pages on WTA's website.
 #
 # get_individual_hike_data()          Returns formatted hike data hosted on WTA's
 #                                     website.
