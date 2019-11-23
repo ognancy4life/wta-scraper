@@ -19,7 +19,7 @@ user@machine:~/wta-scraper$ python3 WTA_Hike_Scraper.py
 ```
 
 ## Supported Visualizations
-To view how I have chosen to visualize this data, visit [WTA Hike Data Dashboard] (https://public.tableau.com/profile/yoshio.hasegawa#!/vizhome/WTA_Hike_Dash/WashingtonStateHikes).
+To view how I have chosen to visualize this data, visit [WTA Hike Data Dashboard](https://public.tableau.com/profile/yoshio.hasegawa#!/vizhome/WTA_Hike_Dash/WashingtonStateHikes).
 
 
 ## Contributors
