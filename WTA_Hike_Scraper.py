@@ -47,9 +47,9 @@ import json
 from datetime import datetime
 
 # Initializing the current date for documentation purposes:
-_DATE = datetime.now().date()
+DATE = datetime.now().date()
 # Initializing the project results folder path:
-RESULTS_PATH = 'C:\\Users\\yoshio.hasegawa\\.gitlab\\wta-scraper\\Results\\'
+RESULTS_PATH = '/Users/yoshiohasegawa/Git/wta-scraper/Results'
 
 
 #*************************************************************************************
@@ -118,8 +118,7 @@ def main():
     wta_hikes = get_individual_hike_data(all_individual_hike_urls)
 
     # Writing the formatted hike data to a CSV file:
-    wta_hikes.to_csv(RESULTS_PATH + '{0}_wta_hike_data.csv'.format(
-        _DATE), index = False)
+    wta_hikes.to_csv(RESULTS_PATH + '{0}_wta_hike_data.csv'.format(DATE), index = False)
 
     print('\n>> WTA Hike Data Scraping Complete <<\n')
 
